@@ -989,9 +989,9 @@
         }
 
         // Contact Form processing with AJAX
-        async function executeSubmit(e) {
+        function executeSubmit(e) {
             e.preventDefault();
-            
+
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
@@ -1003,50 +1003,18 @@
                 return;
             }
 
-            const btn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            
-            // Set Loading indicator UI
-            btn.disabled = true;
-            btnText.textContent = "Odesílám poptávku...";
+            const subject = encodeURIComponent('Nová poptávka z webu — ' + (service || 'Malování'));
+            const body = encodeURIComponent(
+                'Jméno a příjmení: ' + name + '\n' +
+                'Telefon: ' + (phone || 'Neuvedeno') + '\n' +
+                'E-mail: ' + email + '\n' +
+                'Služba: ' + (service || 'Neuvedeno') + '\n\n' +
+                'Popis poptávky:\n' + (message || 'Bez popisu.')
+            );
 
-            const payload = {
-                name,
-                phone: phone || "Neuvedeno",
-                email,
-                service: service || "Neuvedeno",
-                message: message || "Bez doprovodného popisu."
-            };
+            window.location.href = 'mailto:domino-malby@outlook.cz?subject=' + subject + '&body=' + body;
 
-            try {
-                // Step 1: Push lead to local JSON backend endpoint if running on fullstack Express server
-                await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                }).catch(err => console.warn("Local storage save omitted or failed.", err));
-
-                // Step 2: FormSubmit delivery securely via AJAX without native mail clients redirect popping up
-                const emailResponse = await fetch("https://formsubmit.co/ajax/domino-malby@outlook.cz", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        "Jméno a Příjmení": name,
-                        "Telefonní číslo": phone || "Neuvedeno",
-                        "E-mailová adresa": email,
-                        "Typ Služby / Zájem": service || "Neuvedeno",
-                        "Upřesnění / Popis": message || "Bez doprovodného popisu."
-                    })
-                });
-
-                showSuccessUI("Děkujeme! Vaše poptávka byla úspěšně odeslána přímo na domino-malby@outlook.cz. Budeme Vás obratem kontaktovat.");
-            } catch (err) {
-                console.error("General SMTP fallback processing:", err);
-                showSuccessUI("Děkujeme za oslovení! Vaši poptávku jsme úspěšně zaevidovali. Budeme Vás obratem kontaktovat.");
-            }
+            showSuccessUI('Váš e-mailový klient byl otevřen s předvyplněnou poptávkou. Zkontrolujte prosím okno Outlooku a poptávku odešlete.');
         }
 
         function showSuccessUI(msg) {

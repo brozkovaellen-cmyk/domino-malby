@@ -1,0 +1,627 @@
+﻿<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Malování pokojů Liberecký kraj | DOMINO-MALBY</title>
+    <meta name="description" content="Profesionální malování pokojů, fasád a interiérů v Libereckém a Středočeském kraji. Volejte nonstop +420 725 916 975." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: 'Barlow', system-ui, sans-serif;
+        background: #090909;
+        color: #f7f7f7;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #050505;
+        color: #f8f8f8;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+      html { scroll-behavior: smooth; }
+      a { color: #e40014; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .container {
+        width: min(1200px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top left, rgba(228,0,20,0.12), transparent 20%), radial-gradient(circle at bottom right, rgba(255,255,255,0.05), transparent 15%);
+        pointer-events: none;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: rgba(7, 7, 7, 0.92);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      .brand {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.6rem, 2vw, 2.5rem);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .brand span { color: #e40014; }
+      .brand { display:flex; align-items:center; gap:0.6rem; text-decoration:none; }
+      .brand .logo-dice { width:46px; height:28px; display:inline-block; }
+      .brand-text { display:inline-block; color:#fff; font-weight:700; }
+      .brand-main { font-family: 'Cormorant Garamond', serif; font-size:1.2rem; letter-spacing:0.06em; }
+      .brand-sub { color:#e40014; margin-left:0.15rem; font-weight:800; }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .nav-links a { font-size: 0.82rem; color: #dadada; letter-spacing: .16em; text-transform: uppercase; }
+      .hero {
+        padding: 6rem 0 3rem;
+      }
+      .hero-grid {
+        display: grid;
+        gap: 2rem;
+        align-items: center;
+      }
+      .hero-copy {
+        max-width: 720px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.28em;
+        color: #f14f5f;
+        margin-bottom: 1.4rem;
+      }
+      .eyebrow::before {
+        content: '';
+        width: 0.7rem;
+        height: 0.7rem;
+        background: #e40014;
+        border-radius: 999px;
+      }
+      h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(3rem, 5vw, 5.4rem);
+        line-height: 0.98;
+        margin: 0;
+        letter-spacing: -0.04em;
+      }
+      p.lead {
+        margin: 1.8rem 0 2.5rem;
+        max-width: 680px;
+        color: #c7c7c7;
+        font-size: 1.05rem;
+      }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .button-primary,
+      .button-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        padding: 0 1.5rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .button-primary {
+        background: #e40014;
+        color: white;
+      }
+      .button-secondary {
+        background: rgba(255,255,255,0.06);
+        color: #f8f8f8;
+        border-color: rgba(255,255,255,0.14);
+      }
+      .stats {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        margin-top: 3rem;
+      }
+      .stat-card {
+        padding: 1.4rem 1.5rem;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+      }
+      .stat-card h3 {
+        margin: 0 0 .4rem;
+        font-size: 2rem;
+        color: #fff;
+      }
+      .stat-card p {
+        margin: 0;
+        color: #b7b7b7;
+        font-size: 0.92rem;
+      }
+      section {
+        padding: 4rem 0;
+      }
+      .section-title {
+        margin: 0 0 2rem;
+        font-size: clamp(2rem, 3vw, 3.25rem);
+        line-height: 1.03;
+      }
+      .section-intro {
+        max-width: 770px;
+        color: #c2c2c2;
+      }
+      .cards-row {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+      .feature-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 1.75rem;
+      }
+      .feature-card h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+      }
+      .feature-card p {
+        margin: 0.8rem 0 0;
+        color: #b6b6b6;
+      }
+      .step-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 1.75rem;
+      }
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 999px;
+        background: rgba(228,0,20,0.16);
+        color: #e40014;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .gallery-main {
+        position: relative;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: #111;
+        margin-bottom: 1rem;
+      }
+      .gallery-main img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        aspect-ratio: 16 / 10;
+      }
+      .gallery-main .caption {
+        padding: 1.25rem 1.5rem;
+        background: rgba(0,0,0,0.55);
+        color: #f1f1f1;
+      }
+      .gallery-main .caption a { color: #e40014; font-weight:700; text-decoration: none; }
+      .thumb-list {
+        display: grid;
+        gap: 0.75rem;
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+      }
+      .thumb {
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(255,255,255,0.08);
+        position: relative;
+        padding: 0;
+        background: transparent;
+      }
+      .thumb img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .4s ease;
+      }
+      .thumb.active img,
+      .thumb:hover img {
+        transform: scale(1.08);
+      }
+      .thumb::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.22) 100%);
+      }
+      .testimonial {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 2rem;
+      }
+      .testimonial strong {
+        display: block;
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+      .testimonial p {
+        color: #c7c7c7;
+        margin: 0;
+        line-height: 1.8;
+      }
+      .contact-panel {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 1rem;
+        padding: 2rem;
+      }
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
+      }
+      .contact-item {
+        min-width: 230px;
+        color: #f3f3f3;
+      }
+      .contact-item strong { display: block; margin-bottom: 0.35rem; color: #fff; }
+      .form-grid {
+        display: grid;
+        gap: 1rem;
+      }
+      .form-grid input,
+      .form-grid textarea,
+      .form-grid select {
+        width: 100%;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.04);
+        color: #f3f3f3;
+        padding: 1rem 1rem;
+      }
+      .form-grid textarea { min-height: 180px; resize: vertical; }
+      .form-grid button {
+        border: none;
+        border-radius: 0.9rem;
+        padding: 1rem 1.5rem;
+        background: #e40014;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .hero-visual {
+        position: relative;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        min-height: 320px;
+        background: linear-gradient(180deg, rgba(228,0,20,0.16), rgba(0,0,0,0.55)), url('obrázek1.jpg.jpg') center/cover no-repeat;
+      }
+      .hero-visual .hero-box {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2rem;
+      }
+      .hero-visual span {
+        color: #fff;
+        font-size: 0.78rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+      }
+      .hero-visual h2 {
+        margin: 0.9rem 0 0;
+        color: white;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        line-height: 1.05;
+      }
+      .hero-visual p {
+        margin: 1rem 0 0;
+        color: #d4d4d4;
+        max-width: 24rem;
+      }
+      footer {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 2rem 0 3rem;
+        color: #9a9a9a;
+      }
+      .footer-copy {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+      @media (max-width: 880px) {
+        .hero-grid { grid-template-columns: 1fr; }
+        .nav-inner { flex-direction: column; align-items: flex-start; }
+      }
+      @media (max-width: 560px) {
+        h1 { font-size: 2.8rem; }
+        .button-primary, .button-secondary { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav-inner">
+        <a class="brand" href="#top" aria-label="DOMINO MALBY">
+          <svg class="logo-dice" viewBox="0 0 46 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="14" height="14" rx="2" fill="#fff"/>
+            <rect x="16" y="0" width="14" height="14" rx="2" fill="#111" stroke="#fff"/>
+            <rect x="32" y="0" width="14" height="14" rx="2" fill="#fff"/>
+          </svg>
+          <span class="brand-text"><span class="brand-main">DOMINO</span><span class="brand-sub">-MALBY</span></span>
+        </a>
+        <nav class="nav-links">
+          <a href="#sluzby">Služby</a>
+          <a href="#postup">Postup</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container" id="top">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Profesionální malíři</div>
+            <h1>Precizní malířské práce pro váš byt i firmu</h1>
+            <p class="lead">DOMINO-MALBY kombinuje moderní odstíny, kvalitní barvy a dokonalý servis. Provádíme malování, renovace i kompletní úklid po práci.</p>
+            <div class="hero-actions">
+              <a class="button-primary" href="tel:+420725916975">Zavolejte +420 725 916 975</a>
+              <a class="button-secondary" href="#galerie">Z naší dílny</a>
+            </div>
+            <div class="stats">
+              <div class="stat-card">
+                <h3>10+</h3>
+                <p>let praxe</p>
+              </div>
+              <div class="stat-card">
+                <h3>500+</h3>
+                <p>hotových realizací</p>
+              </div>
+              <div class="stat-card">
+                <h3>47 Kč</h3>
+                <p>od / m²</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-box">
+              <span>Malířství Liberec</span>
+              <h2>Profesionální nátěry i generální úklid</h2>
+              <p>Realizujeme malířské práce v Libereckém a Středočeském kraji se zaměřením na kvalitu a čistotu.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="sluzby">
+        <h2 class="section-title">Naše služby a ceník prací</h2>
+        <p class="section-intro">Žádné skryté poplatky. Přesnou kalkulaci připravíme zdarma podle členitosti stěn, termínu a požadovaného odstínu.</p>
+        <div class="cards-row">
+          <div class="feature-card">
+            <h3>Malování – bílá</h3>
+            <p>Profesionální nátěr ve dvou vrstvách s perfektním krytím a hladkým povrchem.</p>
+            <p><strong>Sazba: od 47 Kč / m²</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Malování – barevné odstíny</h3>
+            <p>Tónování podle přání a světelných podmínek, precizní přechody a ostré hrany.</p>
+            <p><strong>Sazba: od 70 Kč / m²</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Omyvatelná barva</h3>
+            <p>Odolný povrch do kuchyní, chodeb a provozních prostor pro snadnou údržbu.</p>
+            <p><strong>Sazba: od 90 Kč / m²</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Penetrace</h3>
+            <p>Zpevňující podklad pro dobré přilnutí a dlouhodobou životnost malby.</p>
+            <p><strong>Sazba: od 15 Kč / m²</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Izolace skvrn</h3>
+            <p>Stoprocentní izolace nikotinu, mastnoty a starého znečištění.</p>
+            <p><strong>Sazba: dle rozsahu</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Akrylování rohů</h3>
+            <p>Pružné tmelení rohů pro čisté linky a zabránění praskání.</p>
+            <p><strong>Sazba: dle rozsahu</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Protiplísňové nátěry</h3>
+            <p>Ochranné sanace pro vlhčí prostory, které zabrání usazení plísní.</p>
+            <p><strong>Sazba: od 58 Kč / m²</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Škrábání staré malby</h3>
+            <p>Důkladné odstranění nesoudržných vrstev pro ideální nový podklad.</p>
+            <p><strong>Sazba: od 45 Kč / m²</strong></p>
+          </div>
+          <div class="feature-card">
+            <h3>Zakrytí a úklid</h3>
+            <p>Kompletní ochrana nábytku, podlah a oken, včetně závěrečného generálního úklidu.</p>
+            <p><strong>Sazba: v ceně</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="postup">
+        <h2 class="section-title">Jednoduchý postup bez starostí</h2>
+        <p class="section-intro">Postupujeme logicky a profesionálně, aby váš prostor byl připraven k užívání co nejrychleji.</p>
+        <div class="cards-row">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <h3>Nezávazné zaměření</h3>
+            <p>Přijedeme k vám, změříme plochy a navrhneme cenově výhodné řešení.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <h3>Odborné poradenství</h3>
+            <p>Poradíme s odstíny, typem nátěru a výsledným vizuálem.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <h3>Důkladná příprava</h3>
+            <p>Zakryjeme nábytek, opravíme drobné nerovnosti a připravíme povrch.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <h3>Precizní nátěr</h3>
+            <p>Minimálně dvě vrstvy pro dokonalé krytí a hladký finiš.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">05</div>
+            <h3>Úklid</h3>
+            <p>Vše uklidíme do posledního prachu a připravíme prostor k okamžitému užití.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="galerie">
+        <h2 class="section-title">Z naší dílny</h2>
+        <p class="section-intro">Reálné realizace s popisy. Kliknutím na miniaturu se změní hlavní záběr.</p>
+        <div class="gallery-main">
+          <img id="gallery-main-image" src="obrázek1.jpg.jpg" alt="Z naší dílny — DOMINO-MALBY">
+          <div class="caption" id="gallery-main-caption">Sledujte nás na Instagramu: <a href="https://www.instagram.com/domino_malby" target="_blank" rel="noreferrer">@domino_malby</a></div>
+        </div>
+        <div class="thumb-list" id="gallery-thumbs">
+          <button class="thumb active" data-src="obrázek1.jpg.jpg" data-caption="Z naší dílny"><img src="obrázek1.jpg.jpg" alt="Z naší dílny"></button>
+          <button class="thumb" data-src="obrázek2.jpg.jpg" data-caption="Moderní kancelářský prostor po malbě"><img src="obrázek2.jpg.jpg" alt="Kancelář"></button>
+          <button class="thumb" data-src="obrázek3.jpg.jpg" data-caption="Barevný akcent ve světlém prostoru"><img src="obrázek3.jpg.jpg" alt="Barevný akcent"></button>
+          <button class="thumb" data-src="obrázek4.jpg.jpg" data-caption="Detail přesné stěnové malby"><img src="obrázek4.jpg.jpg" alt="Detail malby"></button>
+          <button class="thumb" data-src="obrázek5.jpg.jpg" data-caption="Renovace interiéru se světlou malbou"><img src="obrázek5.jpg.jpg" alt="Renovace"></button>
+          <button class="thumb" data-src="obrázek6.jpg.jpg" data-caption="Světle připravený interiér po malbě"><img src="obrázek6.jpg.jpg" alt="Interiér"></button>
+          <button class="thumb" data-src="obrázek7.jpg.jpg" data-caption="Kontrastní barevná stěna s hranou"><img src="obrázek7.jpg.jpg" alt="Barevná stěna"></button>
+          <button class="thumb" data-src="obrázek 8.jpg.jpg" data-caption="Finální vizuál po dokončení malby"><img src="obrázek 8.jpg.jpg" alt="Konečný výsledek"></button>
+        </div>
+      </section>
+
+      <section class="container" id="reference">
+        <h2 class="section-title">Co říkají klienti</h2>
+        <div class="cards-row">
+          <div class="testimonial">
+            <strong>Martina K. (Liberec)</strong>
+            <p>Velmi doporučuji! Malovali mi dětský pokoj a ložnici. Skvělé jednání, čistá a rychlá práce. Chránili nábytek i okna mým přáním a překvapil mě závěrečný úklid v ceně.</p>
+          </div>
+          <div class="testimonial">
+            <strong>Rudolf J. (Mladá Boleslav)</strong>
+            <p>Malování kanceláří a chodeb firmy proběhlo bez omezení provozu. Vše naprosto v pořádku, rychlé zednické začištění trhlin a čistý výsledek.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="kontakt">
+        <h2 class="section-title">Kontaktujte nás</h2>
+        <p class="section-intro">Napište nebo zavolejte a sestavíme nabídku s pevným rozpočtem bez příplatků.</p>
+        <div class="contact-panel">
+          <div class="contact-info">
+            <div class="contact-item">
+              <strong>Telefon</strong>
+              <a href="tel:+420725916975">+420 725 916 975</a>
+            </div>
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:domino-malby@outlook.cz">domino-malby@outlook.cz</a>
+            </div>
+            <div class="contact-item">
+              <strong>Oblast</strong>
+              Liberecký kraj, Jablonec, Semily, Mladá Boleslav, Turnov
+            </div>
+            <div class="contact-item">
+              <strong>Servis</strong>
+              Zakrytí, ochrana a závěrečný generální úklid v ceně.
+            </div>
+          </div>
+          <form class="form-grid" action="mailto:domino-malby@outlook.cz" method="post" enctype="text/plain">
+            <input type="text" name="Jméno" placeholder="Jméno a příjmení" required>
+            <input type="tel" name="Telefon" placeholder="Telefonní číslo" required>
+            <input type="email" name="E-mail" placeholder="Váš e-mail" required>
+            <select name="Služba">
+              <option value="Malování - bílá">Malování - bílá</option>
+              <option value="Malování - barevné odstíny">Malování - barevné odstíny</option>
+              <option value="Omyvatelná barva">Omyvatelná barva</option>
+              <option value="Penetrace / izolace">Penetrace / izolace</option>
+            </select>
+            <textarea name="Poptávka" placeholder="Upřesnění poptávky (m², termín)" required></textarea>
+            <button type="submit">Odeslat nezávaznou poptávku</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <div class="footer-copy">
+        <span>© 2026 DOMINO-MALBY. Všechna práva vyhrazena.</span>
+        <span><a href="https://www.google.com/search?q=domino-malby.cz+recenze" target="_blank" rel="noreferrer">Google recenze</a> · Ochrana osobních údajů · Podmínky použití</span>
+      </div>
+    </footer>
+
+    <script>
+      const mainImage = document.getElementById('gallery-main-image');
+      const mainCaption = document.getElementById('gallery-main-caption');
+      const thumbs = document.querySelectorAll('.thumb');
+      thumbs.forEach(button => {
+        button.addEventListener('click', () => {
+          thumbs.forEach(el => el.classList.remove('active'));
+          button.classList.add('active');
+          mainImage.src = button.dataset.src;
+          mainImage.alt = button.dataset.caption;
+          mainCaption.textContent = button.dataset.caption;
+        });
+      });
+      // Form submit handler: open user's email client with populated body
+      document.querySelectorAll('.form-grid').forEach(form => {
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          const data = new FormData(form);
+          let bodyLines = [];
+          for (const [k,v] of data.entries()) { bodyLines.push(`${k}: ${v}`); }
+          const subject = encodeURIComponent('Nová poptávka z webu');
+          const body = encodeURIComponent(bodyLines.join('\n'));
+          window.location.href = `mailto:domino-malby@outlook.cz?subject=${subject}&body=${body}`;
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
